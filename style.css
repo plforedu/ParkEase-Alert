@@ -1,0 +1,122 @@
+/*
+ * กำหนดค่าเริ่มต้น 4 Body
+ * - ลบขอบ (Margin) และช่องว่าง (Padding) ของเบราว์เซอร์ออกทั้งหมด
+ * - ทำให้แผนที่สามารถยืดออกไปเต็มขอบหน้าจอได้
+ */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* ป้องกันการเกิด Scrollbar เมื่อแผนที่เต็มจอ */
+}
+
+/*
+ * ขนาดของแผนที่ 
+ */
+#map {
+    height: 100vh; /* Viewport Height: ทำให้ความสูงเต็ม 100% ของหน้าจอที่มองเห็น */
+    width: 100%;  /* ความกว้างเต็ม 100% */
+}
+
+/*
+ * สไตล์เพิ่มเติม (เผื่อในอนาคต)
+ * 4 Pop-up ของ Leaflet 
+ */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    border-radius: 5px;
+}
+
+/* Styling for Buttons */
+#route-button, #clear-button {
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#route-button:hover, #clear-button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for Info Panel */
+#info-panel {
+    min-width: 250px;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background: white; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* เพิ่มเงา */
+}
+
+#total-available {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #00cc00; /* ช่องว่าง */
+}
+
+/* ตำแหน่งปุ่มสำหรับรวมปุ่ม "นำทาง" และ "ยกเลิก" */
+#control-panel {
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    z-index: 1000;
+    display: flex; /* ใช้ flexbox จัดเรียงปุ่ม */
+    gap: 10px; /* ระยะห่างระหว่างปุ่ม */
+}
+
+
+/* การจัดรูปแบบสำหรับหน้าต้อนรับ (Landing Page) */
+body {
+    /* ทำให้เนื้อหาอยู่กึ่งกลางหน้าจอ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    text-align: center;
+    
+    /* Style พื้นฐาน (ถ้ายังไม่มีในโค้ดเดิม) */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; 
+    font-family: Arial, sans-serif;
+}
+
+.landing-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+}
+
+.start-button {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 20px;
+    background-color: #007bff; 
+    color: white;
+    text-decoration: none; 
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+    background-color: #0056b3; 
+}
+
+
+.countdown-tooltip {
+    background: white !important;
+    border: 1px solid red !important;
+    border-radius: 4px !important;
+    padding: 2px 5px !important;
+    font-size: 10px !important;
+    font-weight: bold !important;
+    color: red !important;
+}
