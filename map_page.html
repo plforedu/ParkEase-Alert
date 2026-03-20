@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ParkEase Alert - KMUTT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+
+        #finish-button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+        #finish-button:hover {
+            background-color: #27ae60;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="map"></div>
+
+    <div id="control-panel">
+        <button id="route-button">นำทางไปที่จอดรถที่ว่าง</button>
+        <button id="clear-button" style="display: none;">ยกเลิกเส้นทาง</button> 
+        
+
+    </div>
+
+    <div id="info-panel" style="position: absolute; top: 10px; right: 10px; z-index: 1000; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <h3>🚙 ระบบนำทางที่จอดรถ</h3>
+        <p>ช่องจอดว่างทั้งหมด: <span id="total-available">0</span></p>
+        <div id="route-display" style="margin-top: 10px;">
+            <p>สถานะ: <span>พร้อมใช้งาน</span></p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="map.js"></script> 
+
+    <script>
+        // ฟังก์ชันสำหรับเด้งกลับไปหน้าชำระเงิน
+        function finishAndPay() {
+            // ส่งกลับไปหน้า index.html พร้อมคำสั่งเปิดหน้าจ่ายเงิน (?status=pay)
+            window.location.href = 'index.html?status=pay';
+        }
+
+        // โค้ดเสริม: สั่งให้ปุ่มสีเขียวแสดงขึ้นมาเมื่อมีการกด 'นำทาง'
+        document.getElementById('route-button').addEventListener('click', function() {
+            // หน่วงเวลาเล็กน้อยให้ระบบคำนวณเส้นทางเสร็จก่อนค่อยโชว์ปุ่ม
+            setTimeout(() => {
+                document.getElementById('finish-button').style.display = 'inline-block';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
